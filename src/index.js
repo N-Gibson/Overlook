@@ -12,6 +12,7 @@ import './css/base.scss';
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
 
+const date = `${new Date().getFullYear()}/${new Date().getMonth() + 1}/${new Date().getDate()}`;
 let hotel; 
 
 Promise.all([
@@ -24,16 +25,21 @@ Promise.all([
   fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/room-services/roomServices')
   .then(response => response.json()),
 ])
-.then(data => hotel = new Hotel(data[0].users, data[1].rooms, data[2].bookings, data[3].roomServices));
+.then(data => {
+  hotel = new Hotel(data[0].users, data[1].rooms, data[2].bookings, data[3].roomServices, date);
+})
   
 $(document).ready(() => {
   $('#hotel-content, #customer-content, #bookings-content, #room-service-content').hide();
+
+  $(`<p>Todays Date: ${date}</p>`).insertAfter('#todays-date');
 
   $('<p id="welcome-content">Welcome to the Overlook Hotel</p>').insertAfter('main');
 
   $('#hotel').click(() => {
     $('#welcome-content').remove();
     $('#customer-content, #bookings-content, #room-service-content').hide();
+    $('#rooms-available').text(`${hotel.totalRoomsAvailable}`);
     $('#hotel-content').show();
   });
 

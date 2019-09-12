@@ -1,13 +1,13 @@
 import RoomService from '../src/roomService.js';
 
 class Hotel {
-  constructor(users, rooms, bookings, roomServices) {
+  constructor(users, rooms, bookings, roomServices, date) {
     this.usersData = users;
     this.roomsData = rooms;
     this.bookingsData = bookings;
     this.roomServicesData = roomServices;
-    this.date = Date.parse(new Date());
-    this.totalRoomsAvailable = this.checkAvailibility();
+    this.date = date;
+    this.totalRoomsAvailable = this.checkAvailibility().length;
     this.totalRoomsOccupied = this.checkFilledRooms();
     // this.totalRoomServiceCost = roomService.totalCost;
   }
