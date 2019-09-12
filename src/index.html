@@ -1,12 +1,30 @@
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
-    <title>Webpack Starter Kit</title>
+    <title>Overlook Hotel</title>
   </head>
   <body>
-    <h1>Webpack Starter Kit</h1>
-
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
+    <div class='buttons'>
+      <h1>Overlook Hotel</h1>
+      <button id='hotel'>Hotel</button>
+      <button id='customer'>Customer</button>
+      <button id='bookings'>Bookings</button>
+      <button id='room-service'>Room Service</button>
+    </div>
+    <main>
+      <section id='hotel-content' class='tab'>
+        <p>Hotel content</p>
+      </section>
+      <section id='customer-content' class='tab'>
+          <p>Customer content</p>
+      </section>
+      <section id='bookings-content' class='tab'>
+          <p>Bookings content</p>
+      </section>
+      <section id='room-service-content' class='tab'>
+          <p>Room Service content</p>
+      </section>
+    </main>
 
     <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
   </body>
