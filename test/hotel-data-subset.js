@@ -41,4 +41,4 @@ const hotelSubset = { rooms: [
   }
 ] };
 
-export default 'hotelSubset';
+export default hotelSubset;
