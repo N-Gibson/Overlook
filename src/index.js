@@ -40,6 +40,7 @@ $(document).ready(() => {
     $('#welcome-content').remove();
     $('#customer-content, #bookings-content, #room-service-content').hide();
     $('#rooms-available').text(`${hotel.totalRoomsAvailable}`);
+    $('#percent-rooms-occupied').text(`${hotel.percentOccupied}%`);
     $('#hotel-content').show();
   });
 

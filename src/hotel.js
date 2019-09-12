@@ -8,12 +8,12 @@ class Hotel {
     this.roomServicesData = roomServices;
     this.date = date;
     this.totalRoomsAvailable = this.checkAvailibility().length;
-    this.totalRoomsOccupied = this.checkFilledRooms();
+    this.percentOccupied = this.calculateRoomsOccupied();
     // this.totalRoomServiceCost = roomService.totalCost;
   }
 
-  findCustomer(id) {
-    // filter through all classes data? Need to update the dom with ever class.
+  findCustomer(name) {
+    console.log(this.bookingsData);
   }
 
   checkAvailibility() {
@@ -32,7 +32,7 @@ class Hotel {
   }
 
   calculateRoomsOccupied() {
-    return (this.checkFilledRooms().length / this.hotelData.rooms.length * 100);
+    return (this.checkFilledRooms().length / this.roomsData.length * 100);
   }
 
 }
