@@ -1,4 +1,4 @@
-{ roomServices: [
+const roomServiceSubset = { roomServices: [
   {
   userID: 14,
   date: "2019/07/29",
@@ -30,3 +30,5 @@
   totalCost: 17.61
   }
 ] };
+
+export default roomServiceSubset;

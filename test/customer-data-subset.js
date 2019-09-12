@@ -1,4 +1,4 @@
-{ users: [
+const customerSubset = { users: [
   {
   id: 1,
   name: "Matilde Larson"
@@ -20,3 +20,5 @@
   name: "Noemy Little"
   } 
 ] };
+
+export default customerSubset;

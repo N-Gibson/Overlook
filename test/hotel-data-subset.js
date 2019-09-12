@@ -1,4 +1,4 @@
-{ rooms: [
+const hotelSubset = { rooms: [
   {
   number: 1,
   roomType: "residential suite",
@@ -40,3 +40,5 @@
   costPerNight: 246.65
   }
 ] };
+
+export default 'hotelSubset';

@@ -1,4 +1,4 @@
-{ bookings: [
+const bookingsSubset = { bookings: [
   {
   userID: 4,
   date: "2019/10/19",
@@ -25,3 +25,5 @@
   roomNumber: 23
   }
 ] };
+
+export default bookingsSubset;
