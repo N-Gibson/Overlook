@@ -2,12 +2,12 @@ import chai from 'chai';
 const expect = chai.expect;
 
 import Hotel from '../src/hotel.js';
-import hotelSubset from '../test/hotel-data-subset.js';
+import data from '../test/data-subset.js';
 
 describe('Hotel', () => {
   let newHotel;
   beforeEach(() => {
-    newHotel = new Hotel(hotelSubset);
+    newHotel = new Hotel(data[0].users, data[1].rooms, data[2].bookings, data[3].roomServices, Date.parse(new Date()));
   });
   
   it('should be a function', () => {
