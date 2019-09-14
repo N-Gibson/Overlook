@@ -27,7 +27,7 @@ Promise.all([
 ])
 .then(data => {
   hotel = new Hotel(data[0].users, data[1].rooms, data[2].bookings, data[3].roomServices, date);
-})
+});
   
 $(document).ready(() => {
   $('#hotel-content, #customer-content, #bookings-content, #room-service-content').hide();
@@ -41,6 +41,7 @@ $(document).ready(() => {
     $('#customer-content, #bookings-content, #room-service-content').hide();
     $('#rooms-available').text(`${hotel.totalRoomsAvailable}`);
     $('#percent-rooms-occupied').text(`${hotel.percentOccupied}%`);
+    $('#total-daily-revinue').text(`$ ${hotel.calculateDailyRevinue()}`)
     $('#hotel-content').show();
   });
 
