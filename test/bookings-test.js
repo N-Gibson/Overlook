@@ -24,5 +24,9 @@ describe('Bookings', () => {
 
   it('should be able to find a room given a date', () => {
     expect(bookings.findRoomAtDate("2019/08/16")).to.deep.equal([ 41, 23 ]);
+  });
+
+  it('should find all bookings given a user id', () => {
+    expect(bookings.findUserHistory(88)).to.deep.equal([{ userID: 88, date: '2019/08/16', roomNumber: 23 }]);
   })
 })

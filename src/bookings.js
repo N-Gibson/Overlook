@@ -31,6 +31,10 @@ class Bookings {
 
     return roomsWithoutDuplicates
   }
+
+  findUserHistory(id) {
+    return this.bookings.filter(booking => booking.userID === id)
+  }
 }
 
 export default Bookings;
