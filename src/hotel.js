@@ -1,15 +1,16 @@
-import RoomService from '../src/roomService.js';
+import RoomService from './roomService.js';
+import Customer from './customer.js'
 
 class Hotel {
   constructor(users, rooms, bookings, roomServices, date) {
-    this.usersData = users;
-    this.roomsData = rooms;
-    this.bookingsData = bookings;
-    this.roomServicesData = roomServices;
+    this.customersData = new Customer(users);
+    this.hotelData = rooms;
+    // this.bookingsData = new Bookings(bookings);
+    this.roomServicesData = new RoomService(roomServices);
     this.date = date;
     this.totalRoomsAvailable = this.checkAvailibility().length;
     this.percentOccupied = this.calculateRoomsOccupied();
-    // this.totalRoomServiceCost = roomService.totalCost;
+    this.totalRoomServiceCost = this.roomServicesData.findOrderCost(1569477600000);
   }
 
   findCustomer(name) {
@@ -17,22 +18,23 @@ class Hotel {
   }
 
   checkAvailibility() {
-    return this.roomsData.filter(room => room.bidet === true)
+    return this.hotelData.filter(room => room.bidet === true)
   }
 
   checkFilledRooms() {
-    return this.roomsData.filter(room => room.bidet === false)
+    return this.hotelData.filter(room => room.bidet === false)
   }
 
   calculateDailyRevinue() {
-    let totalCostPerNight =  this.totalRoomsOccupied.reduce((totalCost, room) => {
+    let roomsFilled = this.checkFilledRooms();
+    let totalCostPerNight =  roomsFilled.reduce((totalCost, room) => {
       return totalCost += room.costPerNight
     }, 0);
-    // return totalCostPerNight + this.totalRoomServiceCost;
+    return Math.round(totalCostPerNight + this.totalRoomServiceCost);
   }
 
   calculateRoomsOccupied() {
-    return (this.checkFilledRooms().length / this.roomsData.length * 100);
+    return (this.checkFilledRooms().length / this.hotelData.length * 100);
   }
 
 }
