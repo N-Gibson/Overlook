@@ -1,18 +1,16 @@
 class Bookings {
   constructor(bookings) {
-    this.data = bookings;
+    this.bookings = bookings;
   }
 
   findMostPopularDate() {
     let mostFrequent;
     let compare = 0;
-    this.data.reduce((acc, booking) => {
+    this.bookings.reduce((acc, booking) => {
       if(!acc[booking.date]) {
         acc[booking.date] = 1;
-        console.log('making key: ', acc)
       } else {
         acc[booking.date]++;
-        console.log('incrementing value: ', acc)
       }
       if(acc[booking.date] > compare) {
         compare = acc[booking.date];
@@ -21,6 +19,17 @@ class Bookings {
       return acc
     }, {})
     return mostFrequent
+  }
+
+  // findDateWithMostRoomsAvail() {
+  //   // Might need to be in hotel because data is in the wrong set?
+  // }
+
+  findRoomAtDate(date) {
+    let allRoomNumbers = this.bookings.filter(booking => booking.date === date).map(day => day.roomNumber);
+    let roomsWithoutDuplicates = [...new Set(allRoomNumbers)];
+
+    return roomsWithoutDuplicates
   }
 }
 

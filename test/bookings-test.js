@@ -7,7 +7,7 @@ import data from '../test/data-subset.js';
 describe('Bookings', () => {
   let bookings;
   beforeEach(() => {
-    bookings = new Bookings(data[2].bookings)
+    bookings = new Bookings(data[2].bookings);
   });
 
   it('should be a function', () => {
@@ -15,6 +15,14 @@ describe('Bookings', () => {
   });
 
   it('should be able to find the most popular booking date', () => {
-    expect(bookings.findMostPopularDate()).to.equal('2019/08/16')
+    expect(bookings.findMostPopularDate()).to.equal('2019/08/16');
   });
+
+  // it('should be able to find the date with the most rooms available', () => {
+  //   expect(bookings.findDateWithMostRoomsAvail()).to.equal();
+  // });
+
+  it('should be able to find a room given a date', () => {
+    expect(bookings.findRoomAtDate("2019/08/16")).to.deep.equal([ 41, 23 ]);
+  })
 })
