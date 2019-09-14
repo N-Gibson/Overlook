@@ -71,12 +71,12 @@ const data = [
     },
     {
     userID: 29,
-    date: "2019/10/30",
+    date: "2019/10/19",
     roomNumber: 35
     },
     {
     userID: 9,
-    date: "2019/09/01",
+    date: "2019/08/16",
     roomNumber: 41
     },
     {

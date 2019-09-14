@@ -15,6 +15,6 @@ describe('Bookings', () => {
   });
 
   it('should be able to find the most popular booking date', () => {
-    expect(bookings.findMostPopularDate()).to.equal()
+    expect(bookings.findMostPopularDate()).to.equal('2019/08/16')
   });
 })
