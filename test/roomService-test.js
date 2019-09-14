@@ -2,12 +2,12 @@ import chai from 'chai';
 const expect = chai.expect;
 
 import RoomService from '../src/roomService.js';
-import roomServiceSubset from '../test/roomService-data-subset.js';
+import data from '../test/data-subset.js';
 
 describe('Room Service', () => {
   let roomService;
   beforeEach(() => {
-    roomService = new RoomService(roomServiceSubset);
+    roomService = new RoomService(data[3].roomServices);
   });
 
   it('should be a function', () => {

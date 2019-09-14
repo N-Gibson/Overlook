@@ -5,9 +5,9 @@ import Hotel from '../src/hotel.js';
 import data from '../test/data-subset.js';
 
 describe('Hotel', () => {
-  let newHotel;
+  let hotel;
   beforeEach(() => {
-    newHotel = new Hotel(data[0].users, data[1].rooms, data[2].bookings, data[3].roomServices, Date.parse(new Date()));
+    hotel = new Hotel(data[0].users, data[1].rooms, data[2].bookings, data[3].roomServices, Date.parse(new Date()));
   });
   
   it('should be a function', () => {
@@ -23,15 +23,15 @@ describe('Hotel', () => {
   // })
 
   it('should return all available rooms', () => {
-    expect(hotel.totalRoomsAvailable).to.deep.equal([{ number: 2, roomType: 'single room', bidet: true, bedSize: 'full', numBeds: 1, costPerNight: 228.01 } ])
+    expect(hotel.totalRoomsAvailable).to.equal(1)
   });
 
   it('should return all occupied rooms', () => {
-    expect(hotel.totalRoomsOccupied).to.deep.equal([ { number: 1, roomType: "residential suite", bidet: false, bedSize: "twin", numBeds: 1, costPerNight: 265.03 }, { number: 3, roomType: "suite", bidet: false, bedSize: "twin", numBeds: 1, costPerNight: 275.99 }, { number: 4, roomType: "junior suite", bidet: false, bedSize: "full", numBeds: 1, costPerNight: 177.03 }, { number: 5, roomType: "junior suite", bidet: false, bedSize: "king", numBeds: 2, costPerNight: 246.65 } ])
+    expect(hotel.checkFilledRooms()).to.deep.equal([ { number: 1, roomType: "residential suite", bidet: false, bedSize: "twin", numBeds: 1, costPerNight: 265.03 }, { number: 3, roomType: "suite", bidet: false, bedSize: "twin", numBeds: 1, costPerNight: 275.99 }, { number: 4, roomType: "junior suite", bidet: false, bedSize: "full", numBeds: 1, costPerNight: 177.03 }, { number: 5, roomType: "junior suite", bidet: false, bedSize: "king", numBeds: 2, costPerNight: 246.65 } ])
   });
 
-  it.skip('should be able to return the total daily revinue', () => {
-    expect(calculateDailyRevinue()).to.equal()
+  it('should be able to return the total daily revinue', () => {
+    expect(hotel.calculateDailyRevinue()).to.equal(994);
   });
 
   it('should return the percent of rooms occupied', () => {
