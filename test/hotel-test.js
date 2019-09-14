@@ -18,9 +18,9 @@ describe('Hotel', () => {
     expect(hotel.date).to.equal(Date.parse(new Date()));
   });
 
-  // it('should be able to find a specific customer', () => {
-  //   expect(hotel.findCustomer())
-  // })
+  it('should be able to find a specific customer', () => {
+    expect(hotel.findCustomer('Brook Christiansen')).to.equal(4);
+  })
 
   it('should return all available rooms', () => {
     expect(hotel.totalRoomsAvailable).to.equal(1)
