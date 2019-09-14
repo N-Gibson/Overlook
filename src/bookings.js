@@ -26,14 +26,18 @@ class Bookings {
   // }
 
   findRoomAtDate(date) {
-    let allRoomNumbers = this.bookings.filter(booking => booking.date === date).map(day => day.roomNumber);
+    let allRoomNumbers = this.bookings.filter(booking => (Date.parse(booking.date)) == date).map(day => day.roomNumber);
     let roomsWithoutDuplicates = [...new Set(allRoomNumbers)];
 
     return roomsWithoutDuplicates
   }
 
-  findUserHistory(id) {
-    return this.bookings.filter(booking => booking.userID === id)
+  findUserHistoryDates(id) {
+    return this.bookings.filter(booking => booking.userID == id).map(booking => booking.date);
+  }
+
+  findUserHistoryRooms(id) {
+    return this.bookings.filter(booking => booking.userID == id).map(booking => booking.roomNumber);
   }
 }
 

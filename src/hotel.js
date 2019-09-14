@@ -1,11 +1,12 @@
 import RoomService from './roomService.js';
-import Customer from './customer.js'
+import Customer from './customer.js';
+import Bookings from './bookings.js';
 
 class Hotel {
   constructor(users, rooms, bookings, roomServices, date) {
     this.customersData = new Customer(users);
     this.hotelData = rooms;
-    // this.bookingsData = new Bookings(bookings);
+    this.bookingsData = new Bookings(bookings);
     this.roomServicesData = new RoomService(roomServices);
     this.date = date;
     this.totalRoomsAvailable = this.checkAvailibility().length;
@@ -14,7 +15,7 @@ class Hotel {
   }
 
   findCustomer(name) {
-    console.log(this.bookingsData);
+    return this.customersData.data.find(customer => customer.name === name).id
   }
 
   checkAvailibility() {

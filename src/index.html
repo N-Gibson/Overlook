@@ -5,7 +5,8 @@
   </head>
   <body>
     <h1>Overlook Hotel</h1>
-    <p id='todays-date'></p>
+    <h2>Current Customer: <span id='current-customer'>All</span></h2>
+    <h2 id='todays-date'></h2>
     <div class='buttons'>
       <button id='hotel'>Hotel</button>
       <button id='customer'>Customer</button>
@@ -19,10 +20,26 @@
         <p>Total daily revinue: <span id='total-daily-revinue'></span></p>
       </section>
       <section id='customer-content' class='tab'>
-          <p>Customer content</p>
+        <form>
+          <input id='search-customer-input' type=text placeholder='Search Customers'>
+          <button id='search-customer-button' type='button'>Search Customer</button>
+          <input id='new-customer-input' type=text placeholder='New Customer'>
+          <button id='add-customer-button' type='button'>Add Customer</button>
+        </form>
+        <div class='customer-information'>
+          <p id='customer-name'></p>
+          <p id='customer-id'></p>
+        </div>
       </section>
       <section id='bookings-content' class='tab'>
-          <p>Bookings content</p>
+          <p id='most-popular-booking-date'></p>
+          <p id='most-rooms-available-date'>This is where the most rooms avail @ date will go</p>
+          <label for='date'>Search rooms based on date</label>
+          <input id='date' type='text' placeholder='ex. YYYY/MM/DD'>
+          <button id='search-date'>Search Date</button>
+          <p id='rooms-at-date'></p>
+          <p id='user-booking-history-date'></p>
+          <p id='user-booking-history-room-number'></p>
       </section>
       <section id='room-service-content' class='tab'>
           <p>Room Service content</p>
