@@ -36,4 +36,13 @@ export default {
   searchOrderByUser(hotel) {
     $('#specified-customers-order').text(`${$('#current-customer').text()} has ordered: ${hotel.roomServicesData.findOrderByUser($('#customer-id').text())}`)
   },
+
+  findCostByUser(hotel) {
+    $('#specified-customer-cost').text(`${$('#current-customer').text()}'s expendatures: $${hotel.roomServicesData.findCostByUser($('#customer-id').text())}`)
+  },
+
+  findCostByUserAtDate(hotel, date, id) {
+    let usableDate = Date.parse(date);
+    $('#user-cost-at-date').text(`${$('#current-customer').text()}'s bill from ${date} is: ${hotel.roomServicesData.findOrdersOfUserAtDate(id, usableDate)}`);
+  }
 }

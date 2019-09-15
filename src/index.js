@@ -71,12 +71,20 @@ $(document).ready(() => {
 
   $('#room-service').click(() => {
     $('#welcome-content').remove();
+    $('#search-users-orders').hide()
     $('#hotel-content, #customer-content, #bookings-content').hide()
     $('#room-service-content').show();
     domUpdates.displayOrders(hotel, date);
 
+
     if($('#current-customer').text() !== 'All') {
+      $('#search-users-orders').show();
+      $('#search-orders-users-name').text($('#current-customer').text());
       domUpdates.searchOrderByUser(hotel);
+      domUpdates.findCostByUser(hotel);
+      $('#search-orders-users-button').click(() => {
+        domUpdates.findCostByUserAtDate(hotel, date, $('#customer-id').text());
+      })
     }
   });
 

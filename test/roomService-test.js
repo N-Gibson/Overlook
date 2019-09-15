@@ -29,4 +29,8 @@ describe('Room Service', () => {
   it('should be able to find the cost of orders of a customer', () => {
     expect(roomService.findCostByUser(8)).to.equal(14.87);
   });
+
+  it('Should be able to find a users order given a date', () => {
+    expect(roomService.findOrdersOfUserAtDate(92, Date.parse("2019/09/26"))).to.equal(11.15)
+  });
 })

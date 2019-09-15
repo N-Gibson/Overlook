@@ -24,6 +24,15 @@ class RoomService {
       return cost
     }, 0);
   }
+
+  findOrdersOfUserAtDate(id, date) {
+    // Need to do some debugging here the numbers are coming in undefinded (the dates are different when they really arent)
+    
+    return this.roomServiceData.filter(order => order.userID == id).filter(breakdown => Date.parse(breakdown.date) === date).reduce((cost, log) => {
+      cost += log.totalCost
+      return cost
+    }, 0);
+  }
 }
 
 export default RoomService;
