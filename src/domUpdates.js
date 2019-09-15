@@ -2,6 +2,7 @@
 import $ from 'jquery';
 
 export default {
+
   updateSearchCustomerName() { 
     $('#current-customer').text($('#search-customer-input').val());
   },

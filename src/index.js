@@ -11,7 +11,7 @@ import Customer from './customer.js';
 import './css/base.scss';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png'
+import './images/moroccan-background.png';
 
 const date = `${new Date().getFullYear()}/${new Date().getMonth() + 1}/${new Date().getDate()}`;
 let hotel, customer; 
@@ -36,7 +36,9 @@ $(document).ready(() => {
 
   $(`<p>Todays Date: ${date}</p>`).insertAfter('#todays-date');
 
-  $('<p id="welcome-content">Welcome to the Overlook Hotel</p>').insertAfter('main');
+  $('#splash-button').click(() => {
+    $('#welcome-content').remove();
+  })
 
   $('#hotel').click(() => {
     $('#welcome-content').remove();

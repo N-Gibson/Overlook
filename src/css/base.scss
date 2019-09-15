@@ -1,6 +1,63 @@
 /* This is an example of using Sass, otherwise plain CSS works too*/
-$primary-background: lightblue;
+@import 'variables';
+
+#welcome-content {
+  background-color: darkgrey;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+html {
+  // background-color: $primary-background;
+  background-image: url('../images/moroccan-background.png');
+}
 
 body {
+  font-family: $main-font;
   background-color: $primary-background;
+  margin: 5% auto;
+  height: 90vh;
+  width: 90vw;
+}
+
+.header-content {
+  display: flex; 
+  justify-content: space-between;
+  margin: 10px 5px;
+}
+
+h1, 
+h2 {
+  color: $header-color;
+  font-family: $header-font;
+}
+
+span {
+  color: black;
+  font-family: $main-font;
+}
+
+.buttons {
+  background-color: #C1BAB0;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  margin: 10px
+}
+
+.tabs {
+  height: 50px;
+  width: 24%;
+}
+
+.tabs:hover {
+  cursor: pointer;
+  box-shadow: 2.5px 2.5px #6A543D;
+}
+
+main {
+  padding: 20px;
 }

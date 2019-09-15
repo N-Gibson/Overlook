@@ -2,18 +2,27 @@
 <html lang="en-US">
   <head>
     <title>Overlook Hotel</title>
+    <link rel="icon" type="image/png" href="./images/moroccan-background.png">
+    <link rel="stylesheet" href="https://use.typekit.net/wxr1por.css">
+    <link href="https://fonts.googleapis.com/css?family=PT+Serif:400,700&display=swap" rel="stylesheet">
   </head>
   <body>
-    <h1>Overlook Hotel</h1>
-    <h2>Current Customer: <span id='current-customer'>All</span></h2>
-    <h2 id='todays-date'></h2>
+    <div class='header-content'>
+      <h1>Overlook Hotel</h1>
+      <h2>Current Customer: <span id='current-customer'>All</span></h2>
+      <h2 id='todays-date'></h2>
+    </div>
     <div class='buttons'>
-      <button id='hotel'>Hotel</button>
-      <button id='customer'>Customer</button>
-      <button id='bookings'>Bookings</button>
-      <button id='room-service'>Room Service</button>
+      <button id='hotel' class='tabs'>Hotel</button>
+      <button id='customer' class='tabs'>Customer</button>
+      <button id='bookings' class='tabs'>Bookings</button>
+      <button id='room-service' class='tabs'>Room Service</button>
     </div>
     <main>
+      <div id='welcome-content'>
+        <h2>Welcome to the Overlook Hotel</h2>
+        <button id='splash-button' type='button'>Enter</button>
+      </div>
       <section id='hotel-content' class='tab'>
         <p>Total rooms available: <span id='rooms-available'></span></p>
         <p>Percent of rooms occupied: <span id='percent-rooms-occupied'></span></p>
