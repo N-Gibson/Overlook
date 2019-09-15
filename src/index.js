@@ -74,6 +74,10 @@ $(document).ready(() => {
     $('#hotel-content, #customer-content, #bookings-content').hide()
     $('#room-service-content').show();
     domUpdates.displayOrders(hotel, date);
+
+    if($('#current-customer').text() !== 'All') {
+      $('#specified-customers-order').text(`${$('#current-customer').text()} has ordered: ${hotel.roomServicesData.findOrderByUser($('#customer-id').text())}`);
+    }
   });
 
   $('#search-orders-button').click(() => {

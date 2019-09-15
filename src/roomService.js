@@ -15,7 +15,7 @@ class RoomService {
   }
 
   findOrderByUser(id) {
-    return this.roomServiceData.filter(order => order.userID === id).map(order => order.food)
+    return this.roomServiceData.filter(order => order.userID == id).map(breakdown => breakdown.food)
   }
 }
 
