@@ -41,7 +41,7 @@ $(document).ready(() => {
   })
 
   $('#hotel').click(() => {
-    $('#welcome-content').remove();
+    // $('#welcome-content').remove();
     $('#customer-content, #bookings-content, #room-service-content').hide();
     $('#rooms-available').text(`${hotel.totalRoomsAvailable}`);
     $('#percent-rooms-occupied').text(`${hotel.percentOccupied}%`);
@@ -50,13 +50,13 @@ $(document).ready(() => {
   });
 
   $('#customer').click(() => {
-    $('#welcome-content').remove();
+    // $('#welcome-content').remove();
     $('#hotel-content, #bookings-content, #room-service-content').hide();
     $('#customer-content').show();
   });
 
   $('#bookings').click(() => {
-    $('#welcome-content').remove();
+    // $('#welcome-content').remove();
     $('#hotel-content, #customer-content, #room-service-content').hide();
     $('#bookings-content').show();
     $('#most-popular-booking-date').text(`Most popular booking date: ${hotel.bookingsData.findMostPopularDate()}`);
@@ -73,6 +73,7 @@ $(document).ready(() => {
     $('#welcome-content').remove();
     $('#hotel-content, #customer-content, #bookings-content').hide()
     $('#room-service-content').show();
+    domUpdates.displayOrders(hotel, date);
   });
 
   $('#search-customer-button').click(() => {

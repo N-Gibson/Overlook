@@ -4,7 +4,7 @@ class RoomService {
   }
   
   findOrdersByDate(date) {
-    return this.roomServiceData.filter(order => Date.parse(order.date) === date)
+    return this.roomServiceData.filter(order => Date.parse(order.date) === date).map(order => order.food);
   }
 
   findOrderCost(date) {

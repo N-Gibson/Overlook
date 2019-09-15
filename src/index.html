@@ -20,8 +20,10 @@
     </div>
     <main>
       <div id='welcome-content'>
-        <h2>Welcome to the Overlook Hotel</h2>
-        <button id='splash-button' type='button'>Enter</button>
+        <div id='welcome-inner'>
+          <h2 id='welcome-header'>Welcome to the Overlook Hotel</h2>
+          <button id='splash-button' type='button'>Enter</button>
+        </div>
       </div>
       <section id='hotel-content' class='tab'>
         <p>Total rooms available: <span id='rooms-available'></span></p>
@@ -29,9 +31,11 @@
         <p>Total daily revinue: <span id='total-daily-revinue'></span></p>
       </section>
       <section id='customer-content' class='tab'>
-        <form>
+        <form id='form-search-customer'>
           <input id='search-customer-input' type=text placeholder='Search Customers'>
           <button id='search-customer-button' type='button'>Search Customer</button>
+        </form>
+        <form id='form-new-customer'>
           <input id='new-customer-input' type=text placeholder='New Customer'>
           <button id='add-customer-button' type='button'>Add Customer</button>
         </form>
@@ -51,7 +55,9 @@
           <p id='user-booking-history-room-number'></p>
       </section>
       <section id='room-service-content' class='tab'>
-          <p>Room Service content</p>
+          <p id='orders-by-date'></p>
+          <p id='order-costs-date'></p>
+          
       </section>
     </main>
 
