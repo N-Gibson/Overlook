@@ -17,6 +17,13 @@ class RoomService {
   findOrderByUser(id) {
     return this.roomServiceData.filter(order => order.userID == id).map(breakdown => breakdown.food)
   }
+
+  findCostByUser(id) {
+    return this.roomServiceData.filter(order => order.userID == id).reduce((cost, breakdown) => {
+      cost += breakdown.totalCost
+      return cost
+    }, 0);
+  }
 }
 
 export default RoomService;

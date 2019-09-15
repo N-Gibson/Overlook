@@ -31,5 +31,9 @@ export default {
   searchOrders(hotel, date) {
     let usableDate = Date.parse(date);
     $('#search-orders-results').text(`All orders on ${date}: ${hotel.roomServicesData.findOrdersByDate(usableDate)}`);
-  }
+  },
+
+  searchOrderByUser(hotel) {
+    $('#specified-customers-order').text(`${$('#current-customer').text()} has ordered: ${hotel.roomServicesData.findOrderByUser($('#customer-id').text())}`)
+  },
 }

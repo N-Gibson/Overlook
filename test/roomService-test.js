@@ -25,4 +25,8 @@ describe('Room Service', () => {
   it('should be able to find the orders of a customer', () => {
     expect(roomService.findOrderByUser(8)).to.deep.equal(['Practical Granite Sandwich'])
   });
+
+  it('should be able to find the cost of orders of a customer', () => {
+    expect(roomService.findCostByUser(8)).to.equal(14.87);
+  });
 })

@@ -76,7 +76,7 @@ $(document).ready(() => {
     domUpdates.displayOrders(hotel, date);
 
     if($('#current-customer').text() !== 'All') {
-      $('#specified-customers-order').text(`${$('#current-customer').text()} has ordered: ${hotel.roomServicesData.findOrderByUser($('#customer-id').text())}`);
+      domUpdates.searchOrderByUser(hotel);
     }
   });
 
