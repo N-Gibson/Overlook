@@ -22,6 +22,7 @@ export default {
   },
 
   displayOrders(hotel, date) {
+    let usableDate = Date.parse(date);
     (hotel.roomServicesData.findOrdersByDate(usableDate))
     $('#orders-by-date').text(`All orders today: ${hotel.roomServicesData.findOrdersByDate(usableDate)}`);
     $('#order-costs-date').text(`Total cost of orders: $${hotel.roomServicesData.findOrderCost(usableDate)}`);
