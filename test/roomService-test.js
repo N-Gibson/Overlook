@@ -15,10 +15,14 @@ describe('Room Service', () => {
   });
 
   it('should be able to find orders by date', () => {
-    expect(roomService.findOrdersByDate(1569477600000)).to.deep.equal([ { userID: 92, date: '2019/09/26', food: 'Tasty Wooden Sandwich', totalCost: 11.15 }, { userID: 48, date: '2019/09/26', food: 'Fantastic Cotton Sandwich', totalCost: 17.61 } ])
+    expect(roomService.findOrdersByDate(1569477600000)).to.deep.equal(['Tasty Wooden Sandwich', 'Fantastic Cotton Sandwich'])
   });
 
   it('should be able to find the cost of room service on a given day', () => {
     expect(roomService.findOrderCost(1569477600000)).to.deep.equal(29);
-  })
+  });
+   
+  it('should be able to find the orders of a customer', () => {
+    expect(roomService.findOrderByUser(8)).to.deep.equal(['Practical Granite Sandwich'])
+  });
 })

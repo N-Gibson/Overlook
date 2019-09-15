@@ -13,6 +13,10 @@ class RoomService {
       return Math.round(cost)
     }, 0)
   }
+
+  findOrderByUser(id) {
+    return this.roomServiceData.filter(order => order.userID === id).map(order => order.food)
+  }
 }
 
 export default RoomService;
