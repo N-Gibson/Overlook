@@ -76,6 +76,10 @@ $(document).ready(() => {
     domUpdates.displayOrders(hotel, date);
   });
 
+  $('#search-orders-button').click(() => {
+    domUpdates.searchOrders(hotel, $('#search-orders-date').val());
+  });
+
   $('#search-customer-button').click(() => {
     domUpdates.updateSearchCustomerName();
     hotel.customersData.findCustomer($('#current-customer').text())

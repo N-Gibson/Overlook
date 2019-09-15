@@ -27,4 +27,9 @@ export default {
     $('#orders-by-date').text(`All orders today: ${hotel.roomServicesData.findOrdersByDate(usableDate)}`);
     $('#order-costs-date').text(`Total cost of orders: $${hotel.roomServicesData.findOrderCost(usableDate)}`);
   },
+
+  searchOrders(hotel, date) {
+    let usableDate = Date.parse(date);
+    $('#search-orders-results').text(`All orders on ${date}: ${hotel.roomServicesData.findOrdersByDate(usableDate)}`);
+  }
 }
