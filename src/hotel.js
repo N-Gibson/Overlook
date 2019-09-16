@@ -18,25 +18,39 @@ class Hotel {
     return this.customersData.data.find(customer => customer.name === name).id
   }
 
-  checkAvailibility() {
-    return this.hotelData.filter(room => room.bidet === true)
+  checkAvailibility(date) {
+    let usableDate = Date.parse(date); 
+    let bookingsByDate = this.bookingsData.bookings.filter(booking => Date.parse(booking.date) === usableDate).map(room => room.roomNumber);
+
+    return this.hotelData.reduce((acc, room) => {
+        if(!bookingsByDate.includes(room.number)) {
+          acc.push(room);
+        }
+      return acc
+    }, [])
   }
 
-  checkFilledRooms() {
-    return this.hotelData.filter(room => room.bidet === false)
+  checkFilledRooms(date) {
+    return this.hotelData.length - this.checkAvailibility(date).length;
   }
 
-  calculateDailyRevinue() {
+  calculateDailyRevinue(date) {
+    let usableDate = Date.parse(date); 
+    let bookingsByDate = this.bookingsData.bookings.filter(booking => Date.parse(booking.date) === usableDate).map(room => room.roomNumber);
     let totalRoomServiceCost = this.roomServicesData.findOrderCost(Date.parse(date));
-    let roomsFilled = this.checkFilledRooms();
-    let totalCostPerNight =  roomsFilled.reduce((totalCost, room) => {
-      return totalCost += room.costPerNight
-    }, 0);
-    return Math.round(totalCostPerNight + totalRoomServiceCost);
+
+    let roomsBooked = this.hotelData.reduce((acc, room) => {
+      if(bookingsByDate.includes(room.number)) {
+        acc =+ room.costPerNight;
+      }
+      return acc
+    }, 0)
+    return totalRoomServiceCost + roomsBooked
   }
 
-  calculateRoomsOccupied() {
-    return (this.checkFilledRooms().length / this.hotelData.length * 100);
+  calculateRoomsOccupied(date) {
+    let roomsLeft = this.hotelData.length - this.checkFilledRooms(date)
+    return ( roomsLeft / this.hotelData.length * 100);
   }
 
   findRooms(type, date) {
@@ -49,6 +63,10 @@ class Hotel {
       }
       return acc
     }, []);
+  }
+
+  bookReservation(roomNum) {
+    return this.hotelData.find(hotel => hotel.roomNumber === roomNum)
   }
 }
 

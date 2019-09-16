@@ -51,4 +51,8 @@ export default {
     $('#filtered-rooms-type').text(`${$('#specify-type').val()}'s available: ${hotel.findRooms(type.toLowerCase(), usableDate).map(room => room.roomNumber)}`);
   },
 
+  addBookingSubmit(hotel, roomNumber) {
+    hotel.bookReservation(roomNumber);
+  }
+
 }

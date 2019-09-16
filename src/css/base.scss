@@ -183,4 +183,26 @@ main {
   margin: 10px;
   grid-area: bookingsRight;
   text-align: center;
+  overflow: break-word;
+}
+
+#room-service-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 
+  'roomServiceLeft roomServiceRight';
+}
+
+.hotel-orders-info {
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid;
+  grid-area: roomServiceLeft;
+}
+
+.customer-order-info {
+  border: 1px solid;
+  padding: 10px;
+  margin: 10px;
+  grid-area: roomServiceRight;
 }

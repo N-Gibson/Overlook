@@ -23,19 +23,19 @@ describe('Hotel', () => {
   })
 
   it('should return all available rooms', () => {
-    expect(hotel.totalRoomsAvailable).to.equal(1)
+    expect(hotel.checkAvailibility('2019/10/19')).to.deep.equal([ {bedSize: "king", "bidet": false, costPerNight: 246.65, numBeds: 2, number: 5, roomType: "junior suite"} ])
   });
 
   it('should return all occupied rooms', () => {
-    expect(hotel.checkFilledRooms()).to.deep.equal([ { number: 1, roomType: "residential suite", bidet: false, bedSize: "twin", numBeds: 1, costPerNight: 265.03 }, { number: 3, roomType: "suite", bidet: false, bedSize: "twin", numBeds: 1, costPerNight: 275.99 }, { number: 4, roomType: "junior suite", bidet: false, bedSize: "full", numBeds: 1, costPerNight: 177.03 }, { number: 5, roomType: "junior suite", bidet: false, bedSize: "king", numBeds: 2, costPerNight: 246.65 } ])
+    expect(hotel.checkFilledRooms('2019/10/19')).to.equal(4)
   });
 
   it('should be able to return the total daily revinue', () => {
-    expect(hotel.calculateDailyRevinue()).to.equal(994);
+    expect(hotel.calculateDailyRevinue('2019/10/19')).to.equal();
   });
 
   it('should return the percent of rooms occupied', () => {
-    expect(hotel.calculateRoomsOccupied()).to.equal(80)
+    expect(hotel.calculateRoomsOccupied('2019/10/19')).to.equal(80)
   });
 
   it('should be able to find a room based on type', () => {

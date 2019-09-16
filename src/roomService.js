@@ -10,7 +10,7 @@ class RoomService {
   findOrderCost(date) {
     return this.roomServiceData.filter(order => Date.parse(order.date) === date).reduce((cost, log) => {
       cost += log.totalCost;
-      return Math.round(cost)
+      return cost
     }, 0)
   }
 

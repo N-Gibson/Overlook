@@ -45,9 +45,9 @@ $(document).ready(() => {
   $('#hotel').click(() => {
     // $('#welcome-content').remove();
     $('#customer-content, #bookings-content, #room-service-content').hide();
-    $('#rooms-available').text(`${hotel.checkAvailibility().length}`);
-    $('#percent-rooms-occupied').text(`${hotel.calculateRoomsOccupied()}%`);
-    $('#total-daily-revinue').text(`$ ${hotel.calculateDailyRevinue()}`)
+    $('#rooms-available').text(`${hotel.checkAvailibility(date).length}`);
+    $('#percent-rooms-occupied').text(`${hotel.calculateRoomsOccupied(date)}%`);
+    $('#total-daily-revinue').text(`$ ${hotel.calculateDailyRevinue(date)}`)
     $('#hotel-content').show();
   });
 
@@ -65,6 +65,14 @@ $(document).ready(() => {
     if($('#current-customer').text() !== 'All') {
       domUpdates.updateUserHistory(hotel, $('#customer-id').text());
     }
+  });
+
+  $('#filter-rooms-by-type').click(() => {
+    $('<input id="room-number-input" type="text" placeholder="Room Number"><button id="confirm-reservation" type="button">Confirm Reservation</button>').insertAfter('#filtered-rooms-type')
+  });
+
+  $('confirm-reservation').click(() => {
+    domUpdates.addBookingSubmit(hotel, $('#room-number-input').val());
   });
 
   $('#create-booking').click(() => {
