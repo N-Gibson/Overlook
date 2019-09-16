@@ -40,11 +40,13 @@ $(document).ready(() => {
     $('#welcome-content').remove();
   })
 
+  $('.make-booking-form').hide();
+
   $('#hotel').click(() => {
     // $('#welcome-content').remove();
     $('#customer-content, #bookings-content, #room-service-content').hide();
-    $('#rooms-available').text(`${hotel.totalRoomsAvailable}`);
-    $('#percent-rooms-occupied').text(`${hotel.percentOccupied}%`);
+    $('#rooms-available').text(`${hotel.checkAvailibility().length}`);
+    $('#percent-rooms-occupied').text(`${hotel.calculateRoomsOccupied()}%`);
     $('#total-daily-revinue').text(`$ ${hotel.calculateDailyRevinue()}`)
     $('#hotel-content').show();
   });
@@ -63,6 +65,14 @@ $(document).ready(() => {
     if($('#current-customer').text() !== 'All') {
       domUpdates.updateUserHistory(hotel, $('#customer-id').text());
     }
+  });
+
+  $('#create-booking').click(() => {
+    $('.make-booking-form').toggle();
+  });
+
+  $('#filter-rooms-by-type').click(() => {
+    domUpdates.filterRoomsByType(hotel, $('#specify-type').val(), date);
   });
 
   $('#search-date').click(() => {
@@ -110,7 +120,7 @@ $(document).ready(() => {
     $('.customer-information');
     hotel.customersData.createCustomer($('#current-customer').text());
     $('#customer-name').text(`Name: ${hotel.customersData.currentCustomer.name}`);
-    $('#customer-id').text(`ID: ${hotel.customersData.currentCustomer.id}`);
+    $('#customer-id').text(`${hotel.customersData.currentCustomer.id}`);
   });
 
 });

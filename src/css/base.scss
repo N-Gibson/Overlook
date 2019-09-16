@@ -15,6 +15,7 @@
 }
 
 #welcome-inner {
+  border-radius: 5px;
   background-color: $primary-background;
   display: flex;
   flex-direction: column;
@@ -28,6 +29,7 @@
 }
 
 #splash-button {
+  border-radius: 2.5px;
   margin: 20px auto;
   height: 50px;
   width: 24%;
@@ -45,6 +47,7 @@ html {
 body {
   font-family: $main-font;
   background-color: $primary-background;
+  border-radius: 5px;
   margin: 5% auto;
   height: 90vh;
   width: 90vw;
@@ -68,6 +71,7 @@ span {
 }
 
 .buttons {
+  border-radius: 5px;
   background-color: $main-background-color;
   display: flex;
   justify-content: space-between;
@@ -76,6 +80,7 @@ span {
 }
 
 .tabs {
+  border-radius: 2.5px;
   height: 50px;
   width: 24%;
 }
@@ -92,6 +97,12 @@ main {
 #customer-content {
   height: 100%;
   width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 25%;
+  grid-template-areas: 
+  'left right'
+  'bottom bottom'
 }
 
 #form-search-customer {
@@ -102,6 +113,7 @@ main {
   flex-direction: column;
   align-items: center;
   padding: 10px;
+  grid-area: left;
 }
 
 #form-new-customer {
@@ -111,20 +123,64 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  grid-area: right;
+  padding: 10px;
 }
 
 #new-customer-input,
 #search-customer-input {
   width: 80%;
   height: 50px;
+  border: none;
+  border-radius: 2.5px;
+  margin: 10px;
+  padding-left: 5px;
 }
 
 #search-customer-button,
 #add-customer-button {
-  width: 80%;
+  width: 81%;
   height: 50px;
+  border: none;
+  border-radius: 2.5px;
+}
+
+#search-customer-button:hover,
+#add-customer-button:hover {
+  cursor: pointer;
+  box-shadow: 2.5px 2.5px #6A543D;
 }
 
 #customer-information {
   background-color: #C1BAB0;
+  grid-area: bottom;
+  text-align: center;
+}
+
+#hotel-content {
+  border: 1px solid;
+  width: 50%;
+  margin: auto;
+  padding: 10px;
+}
+
+#bookings-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 
+  'bookingsLeft bookingsRight';
+}
+
+.hotel-bookings-content {
+  border: 1px solid;
+  margin: 10px;
+  grid-area: bookingsLeft;
+  text-align: center;
+}
+
+.user-bookings-content {
+  border: 1px solid;
+  margin: 10px;
+  grid-area: bookingsRight;
+  text-align: center;
 }

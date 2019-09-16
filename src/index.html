@@ -45,14 +45,25 @@
         </div>
       </section>
       <section id='bookings-content' class='tab'>
+        <div class='hotel-bookings-content'>
           <p id='most-popular-booking-date'></p>
           <p id='most-rooms-available-date'>This is where the most rooms avail @ date will go</p>
           <label for='date'>Search rooms based on date</label>
           <input id='date' type='text' placeholder='ex. YYYY/MM/DD'>
           <button id='search-date'>Search Date</button>
           <p id='rooms-at-date'></p>
+        </div>
+        <div class='user-bookings-content'>
           <p id='user-booking-history-date'></p>
           <p id='user-booking-history-room-number'></p>
+          <button id='create-booking'>New Booking</button>
+          <div class='make-booking-form'>
+            <input id='specify-type' type='text' placeholder='Filter Rooms by Type'>
+            <input type='text' placeholder='ex. YYYY/MM/DD'>
+            <button id='filter-rooms-by-type'>Search Rooms</button>
+            <p id='filtered-rooms-type'></p>
+          </div>
+        </div>
       </section>
       <section id='room-service-content' class='tab'>
           <p id='orders-by-date'></p>

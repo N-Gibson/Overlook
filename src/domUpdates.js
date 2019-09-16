@@ -44,5 +44,11 @@ export default {
   findCostByUserAtDate(hotel, date, id) {
     let usableDate = Date.parse(date);
     $('#user-cost-at-date').text(`${$('#current-customer').text()}'s bill from ${date} is: ${hotel.roomServicesData.findOrdersOfUserAtDate(id, usableDate)}`);
-  }
+  },
+
+  filterRoomsByType(hotel, type, date) {
+    let usableDate = Date.parse(date);
+    $('#filtered-rooms-type').text(`${$('#specify-type').val()}'s available: ${hotel.findRooms(type.toLowerCase(), usableDate).map(room => room.roomNumber)}`);
+  },
+
 }

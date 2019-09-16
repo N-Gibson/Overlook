@@ -36,5 +36,9 @@ describe('Hotel', () => {
 
   it('should return the percent of rooms occupied', () => {
     expect(hotel.calculateRoomsOccupied()).to.equal(80)
+  });
+
+  it('should be able to find a room based on type', () => {
+    expect(hotel.findRoomsBasedOnType('junior suite')).to.deep.equal([{ number: 4,roomType: "junior suite", bidet: false,bedSize: "full", numBeds: 1, costPerNight: 177.03 }, { number: 5, roomType: "junior suite", bidet: false, bedSize: "king",numBeds: 2, costPerNight: 246.65 }]);
   })
 });
