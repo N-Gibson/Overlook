@@ -85,16 +85,25 @@ $(document).ready(() => {
   });
 
   $('#filter-rooms-by-type').click(() => {
+    $('.bookings-info').remove();
     if($('#specify-type').val() !== '' && $('#specify-date').val() !== '') {
       console.log('true')
-      // $('<input id="room-number-input" type="text" placeholder="Room Number"><button id="confirm-reservation" type="button">Confirm Reservation</button>').insertAfter('#filtered-rooms-type')
-      // domUpdates.filterRoomsByType(hotel, $('#specify-type').val(), $('#specify-date').val());
+
       hotel.findRooms($('#specify-type').val(), $('#specify-date').val()).map(room => domUpdates.filterRoomsByType(room));
     } else {
       console.log('false')
       $('<p>Fill out both areas').insertAfter('#filtered-rooms-type');
     }
   });
+
+  $('main').click((e) => {
+    if(e.target.id === 'confirm-reservation') {
+      hotel.bookReservation($('#specify-date').val(), e.target.parentElement.children[4].innerHTML.split(' ')[2], $('#customer-id').text())
+
+      domUpdates.showReservation($('#current-customer').text(), $('#specify-date').val(), e.target.parentElement.children[0].innerHTML.split(' ')[4], e.target.parentElement.children[1].innerHTML.split(' ')[2], e.target.parentElement.children[2].innerHTML.split(' ')[3], e.target.parentElement.children[3].innerHTML.split(' ')[2], e.target.parentElement.children[4].innerHTML.split(' ')[2], e.target.parentElement.children[5].innerHTML.split(' ')[2]);
+      console.log(hotel.hotelData[hotel.hotelData.length - 1]);
+    }
+  })
 
   $('#search-date').click(() => {
   $('#date-with-most-available').text(domUpdates.searchRoomsByDate(hotel, $('#date').val()));

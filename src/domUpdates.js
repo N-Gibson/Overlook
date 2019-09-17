@@ -60,7 +60,7 @@ export default {
     // $('#filtered-rooms-type').text(``)
 
     $(`<div class='bookings-info'>
-    <p>Cost Per Night: $${type.costPerNight}</p>
+    <p>Cost Per Night: $ ${type.costPerNight}</p>
     <p>Room Type: ${type.roomType}</p>
     <p>Number of Beds: ${type.numBeds}</p>
     <p>Bed Size: ${type.bedSize}</p>
@@ -77,6 +77,18 @@ export default {
 
   mostRoomsAvail(hotel) {
     $('#most-rooms-available-date').text(`Date with most rooms available: ${hotel.findMostAvailRooms()}`);
-  }
+  },
 
+  showReservation(currentCustomer, date, costPerNight, roomType, numBeds, bedSize, number, bidet) {
+    $('.bookings-info').remove();
+
+    $(`<div>${currentCustomer} just made a resrvation on ${date} :
+    <p>Cost Per Night: $ ${costPerNight}</p>
+    <p>Room Type: ${roomType}</p>
+    <p>Number of Beds: ${numBeds}</p>
+    <p>Bed Size: ${bedSize}</p>
+    <p>Room Number: ${number}</p>
+    <p>Bidet Available: ${bidet}</p>
+    </div>`).insertAfter('#filtered-rooms-type')
+  },
 }
