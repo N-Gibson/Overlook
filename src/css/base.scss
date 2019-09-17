@@ -185,6 +185,7 @@ main {
   margin: 10px;
   grid-area: bookingsRight;
   text-align: center;
+  padding: 10px;
   overflow: break-word;
 }
 
@@ -207,4 +208,10 @@ main {
   padding: 10px;
   margin: 10px;
   grid-area: roomServiceRight;
+}
+
+.bookings-table {
+  border: 1px solid; 
+  padding: 10px;
+  margin: 10px;
 }

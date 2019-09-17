@@ -63,8 +63,6 @@ $(document).ready(() => {
     if($('#current-customer').text() !== 'All') {
       $('#booking-error').remove();
       $('.bookings-headers').show();
-      // domUpdates.updateUserHistory(hotel, $('#customer-id').text());
-      // console.log(hotel.bookingsData.findUserHistoryDates($('#customer-id').val()))
       hotel.bookingsData.findUserHistoryDates($('#customer-id').text()).map(date => domUpdates.updateUserHistory(date));
 
       hotel.bookingsData.findUserHistoryRooms($('#customer-id').text()).map(room => domUpdates.updateRoomHistory(room));
@@ -89,8 +87,9 @@ $(document).ready(() => {
   $('#filter-rooms-by-type').click(() => {
     if($('#specify-type').val() !== '' && $('#specify-date').val() !== '') {
       console.log('true')
-      $('<input id="room-number-input" type="text" placeholder="Room Number"><button id="confirm-reservation" type="button">Confirm Reservation</button>').insertAfter('#filtered-rooms-type')
-      domUpdates.filterRoomsByType(hotel, $('#specify-type').val(), $('#specify-date').val());
+      // $('<input id="room-number-input" type="text" placeholder="Room Number"><button id="confirm-reservation" type="button">Confirm Reservation</button>').insertAfter('#filtered-rooms-type')
+      // domUpdates.filterRoomsByType(hotel, $('#specify-type').val(), $('#specify-date').val());
+      hotel.findRooms($('#specify-type').val(), $('#specify-date').val()).map(room => domUpdates.filterRoomsByType(room));
     } else {
       console.log('false')
       $('<p>Fill out both areas').insertAfter('#filtered-rooms-type');

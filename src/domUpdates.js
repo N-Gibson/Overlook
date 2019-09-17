@@ -24,8 +24,6 @@ export default {
 
   updateUserHistory(date) {
     $('#user-booking-history-date').append(`<li>${date}</li>`)
-    // $('#user-booking-history-date').text(`All dates ${$('#current-customer').text()} visited with us: ${hotel.bookingsData.findUserHistoryDates(id)}`);
-    // $('#user-booking-history-room-number').text(`All rooms ${$('#current-customer').text()} stayed in: ${hotel.bookingsData.findUserHistoryRooms(id)}`);
   },
 
   updateRoomHistory(roomNum) {
@@ -57,9 +55,19 @@ export default {
     $('#user-cost-at-date').text(`${$('#current-customer').text()}'s bill from ${date} is: ${hotel.roomServicesData.findOrdersOfUserAtDate(id, usableDate)}`);
   },
 
-  filterRoomsByType(hotel, type, date) {
-    $('#filtered-rooms-type').text(`${$('#specify-type').val()}'s available: ${hotel.findRooms(type.toLowerCase(), date).map(room => room.number)}`);
+  filterRoomsByType(type) {
+    console.log(type)
+    // $('#filtered-rooms-type').text(``)
 
+    $(`<div class='bookings-info'>
+    <p>Cost Per Night: $${type.costPerNight}</p>
+    <p>Room Type: ${type.roomType}</p>
+    <p>Number of Beds: ${type.numBeds}</p>
+    <p>Bed Size: ${type.bedSize}</p>
+    <p>Room Number: ${type.number}</p>
+    <p>Bidet Available: ${type.bidet}</p>
+    <button id='confirm-reservation'>Confirm Reservation</button>
+    </div>`).insertAfter('#filtered-rooms-type')
     // NEED To add prices beds, etc... 
   },
 
