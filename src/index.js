@@ -59,20 +59,17 @@ $(document).ready(() => {
 
   $('#bookings').click(() => {
     // $('#welcome-content').remove();
-    $('#hotel-content, #customer-content, #room-service-content').hide();
-    $('#bookings-content').show();
-    $('#most-popular-booking-date').text(`Most popular booking date: ${hotel.bookingsData.findMostPopularDate()}`);
     if($('#current-customer').text() !== 'All') {
       domUpdates.updateUserHistory(hotel, $('#customer-id').text());
     }
+    $('#hotel-content, #customer-content, #room-service-content').hide();
+    $('#bookings-content').show();
+    $('#most-popular-booking-date').text(`Most popular booking date: ${hotel.bookingsData.findMostPopularDate()}`);
+    domUpdates.mostRoomsAvail(hotel);
   });
 
-  $('#filter-rooms-by-type').click(() => {
-    $('<input id="room-number-input" type="text" placeholder="Room Number"><button id="confirm-reservation" type="button">Confirm Reservation</button>').insertAfter('#filtered-rooms-type')
-  });
-
-  $('confirm-reservation').click(() => {
-    domUpdates.addBookingSubmit(hotel, $('#room-number-input').val());
+  $('#confirm-reservation').click((e) => {
+    domUpdates.addBookingSubmit(hotel, $('#specify-date').val(), $('#room-number-input').val(), $('#customer-id').text());
   });
 
   $('#create-booking').click(() => {
@@ -82,6 +79,7 @@ $(document).ready(() => {
   $('#filter-rooms-by-type').click(() => {
     if($('#specify-type').val() !== '' && $('#specify-date').val() !== '') {
       console.log('true')
+      $('<input id="room-number-input" type="text" placeholder="Room Number"><button id="confirm-reservation" type="button">Confirm Reservation</button>').insertAfter('#filtered-rooms-type')
       domUpdates.filterRoomsByType(hotel, $('#specify-type').val(), date);
     } else {
       console.log('false')
@@ -94,7 +92,10 @@ $(document).ready(() => {
   });
 
   $('#room-service').click(() => {
-    $('#welcome-content').remove();
+    if($('#current-customer').text() !== 'All') {
+      $('#room-service-no-cust').remove()
+    }
+    // $('#welcome-content').remove();
     $('#search-users-orders').hide()
     $('#hotel-content, #customer-content, #bookings-content').hide()
     $('#room-service-content').show();
@@ -117,15 +118,13 @@ $(document).ready(() => {
   });
 
   $('#search-customer-button').click(() => {
-    domUpdates.updateSearchCustomerName();
-    hotel.customersData.findCustomer($('#current-customer').text())
+    hotel.customersData.findCustomer($('#search-customer-input').val())
+    console.log(hotel.customersData.currentCustomer)
     if (hotel.customersData.currentCustomer === undefined) {
       $('.customer-information').text('Customer not found. Please add a new customer!')
     } else {
+      domUpdates.updateSearchCustomerName(hotel);
       // Need to do some bug fixing here the name wont update after an invalid user has been inputted. 
-
-      $('#customer-name').text(`Name: ${hotel.customersData.currentCustomer.name}`);
-      $('#customer-id').text(`${hotel.customersData.currentCustomer.id}`);
     }
   });
 

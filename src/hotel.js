@@ -66,17 +66,39 @@ class Hotel {
     }, []);
 
     if(foundRooms === []) {
+      console.log('in condition', availableRooms)
       return availableRooms;
     } else {
+      console.log('found room', foundRooms)
       return foundRooms
     }
 
-
-    // check if room is not found
+    // Revise conditional logic the availableRooms return is never found
   }
 
-  bookReservation(roomNum) {
-    return this.hotelData.find(hotel => hotel.roomNumber === roomNum)
+  bookReservation(date, roomNum, id) {
+    console.log('in right spot')
+    this.hotelData.push({date: date, roomNumber: roomNum, userID: id})
+
+    console.log(this.hotelData);
+  }
+
+  findMostAvailRooms() {
+    let leastFrequent;
+    let compare = 0;
+    let allBooking = this.bookingsData.bookings.reduce((acc, booking) => {
+      if(!acc[booking.date]) {
+        acc[booking.date] = 1;
+      } else {
+        acc[booking.date]++;
+      }
+      if(acc[booking.date] >= compare) {
+        compare = acc[booking.date];
+        leastFrequent = booking.date;
+      }
+      return acc
+    }, {})
+    return leastFrequent
   }
 }
 

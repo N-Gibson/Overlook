@@ -3,8 +3,14 @@ import $ from 'jquery';
 
 export default {
 
-  updateSearchCustomerName() { 
+  updateSearchCustomerName(hotel) { 
+    $('.customer-information').html(`<div class='customer-information'>
+    <p id='customer-name'></p>
+    <p id='customer-id'></p>
+    </div>`);
     $('#current-customer').text($('#search-customer-input').val());
+    $('#customer-name').text(`Name: ${hotel.customersData.currentCustomer.name}`);
+    $('#customer-id').text(`${hotel.customersData.currentCustomer.id}`);
   },
 
   updateNewCustomerName() {
@@ -47,11 +53,17 @@ export default {
   },
 
   filterRoomsByType(hotel, type, date) {
-    $('#filtered-rooms-type').text(`${$('#specify-type').val()}'s available: ${hotel.findRooms(type.toLowerCase(), date).map(room => room.roomNumber)}`);
+    $('#filtered-rooms-type').text(`${$('#specify-type').val()}'s available: ${hotel.findRooms(type.toLowerCase(), date).map(room => room.number)}`);
+
+    // NEED To add prices beds, etc... 
   },
 
-  addBookingSubmit(hotel, roomNumber) {
-    hotel.bookReservation(roomNumber);
+  addBookingSubmit(hotel, date, id, roomNumber) {
+    hotel.bookReservation(date, roomNumber, id);
+  },
+
+  mostRoomsAvail(hotel) {
+    $('#most-rooms-available-date').text(`Date with most rooms available: ${hotel.findMostAvailRooms()}`);
   }
 
 }
