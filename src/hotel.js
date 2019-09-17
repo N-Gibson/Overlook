@@ -40,12 +40,14 @@ class Hotel {
     let totalRoomServiceCost = this.roomServicesData.findOrderCost(Date.parse(date));
 
     let roomsBooked = this.hotelData.reduce((acc, room) => {
-      if(bookingsByDate.includes(room.number)) {
-        acc =+ room.costPerNight;
-      }
+      bookingsByDate.forEach(booking => {
+        if(booking === room.number) {
+          acc += room.costPerNight;
+        }
+      })
       return acc
     }, 0)
-    return totalRoomServiceCost + roomsBooked
+    return (totalRoomServiceCost + roomsBooked).toFixed(2)
   }
 
   calculateRoomsOccupied(date) {
@@ -54,15 +56,23 @@ class Hotel {
   }
 
   findRooms(type, date) {
-    let roomByNumber = this.hotelData.filter(room => room.roomType === type).map(room => room.number);
-    let roomByDate = this.bookingsData.bookings.filter(booking => Date.parse(booking.date) === date)
-
-    return roomByDate.reduce((acc, room) => {
-      if (roomByNumber.includes(room.roomNumber)) {
+    let availableRooms = this.checkAvailibility(date); 
+    let roomByType = availableRooms.filter(room => room.roomType === type).map(room => room.number);
+    let foundRooms = availableRooms.reduce((acc, room) => {
+      if (roomByType.includes(room.number)) {
         acc.push(room)
       }
       return acc
     }, []);
+
+    if(foundRooms === []) {
+      return availableRooms;
+    } else {
+      return foundRooms
+    }
+
+
+    // check if room is not found
   }
 
   bookReservation(roomNum) {

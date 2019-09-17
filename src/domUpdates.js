@@ -47,8 +47,7 @@ export default {
   },
 
   filterRoomsByType(hotel, type, date) {
-    let usableDate = Date.parse(date);
-    $('#filtered-rooms-type').text(`${$('#specify-type').val()}'s available: ${hotel.findRooms(type.toLowerCase(), usableDate).map(room => room.roomNumber)}`);
+    $('#filtered-rooms-type').text(`${$('#specify-type').val()}'s available: ${hotel.findRooms(type.toLowerCase(), date).map(room => room.roomNumber)}`);
   },
 
   addBookingSubmit(hotel, roomNumber) {

@@ -80,7 +80,13 @@ $(document).ready(() => {
   });
 
   $('#filter-rooms-by-type').click(() => {
-    domUpdates.filterRoomsByType(hotel, $('#specify-type').val(), date);
+    if($('#specify-type').val() !== '' && $('#specify-date').val() !== '') {
+      console.log('true')
+      domUpdates.filterRoomsByType(hotel, $('#specify-type').val(), date);
+    } else {
+      console.log('false')
+      $('<p>Fill out both areas').insertAfter('#filtered-rooms-type');
+    }
   });
 
   $('#search-date').click(() => {
