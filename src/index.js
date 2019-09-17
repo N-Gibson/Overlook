@@ -59,8 +59,15 @@ $(document).ready(() => {
 
   $('#bookings').click(() => {
     // $('#welcome-content').remove();
+    $('.bookings-headers').hide();
     if($('#current-customer').text() !== 'All') {
-      domUpdates.updateUserHistory(hotel, $('#customer-id').text());
+      $('#booking-error').remove();
+      $('.bookings-headers').show();
+      // domUpdates.updateUserHistory(hotel, $('#customer-id').text());
+      // console.log(hotel.bookingsData.findUserHistoryDates($('#customer-id').val()))
+      hotel.bookingsData.findUserHistoryDates($('#customer-id').text()).map(date => domUpdates.updateUserHistory(date));
+
+      hotel.bookingsData.findUserHistoryRooms($('#customer-id').text()).map(room => domUpdates.updateRoomHistory(room));
     }
     $('#hotel-content, #customer-content, #room-service-content').hide();
     $('#bookings-content').show();
@@ -69,18 +76,21 @@ $(document).ready(() => {
   });
 
   $('#confirm-reservation').click((e) => {
+    console.log('hello')
     domUpdates.addBookingSubmit(hotel, $('#specify-date').val(), $('#room-number-input').val(), $('#customer-id').text());
   });
 
   $('#create-booking').click(() => {
+    if($('#current-customer').text() !== 'All') {
     $('.make-booking-form').toggle();
+    }
   });
 
   $('#filter-rooms-by-type').click(() => {
     if($('#specify-type').val() !== '' && $('#specify-date').val() !== '') {
       console.log('true')
       $('<input id="room-number-input" type="text" placeholder="Room Number"><button id="confirm-reservation" type="button">Confirm Reservation</button>').insertAfter('#filtered-rooms-type')
-      domUpdates.filterRoomsByType(hotel, $('#specify-type').val(), date);
+      domUpdates.filterRoomsByType(hotel, $('#specify-type').val(), $('#specify-date').val());
     } else {
       console.log('false')
       $('<p>Fill out both areas').insertAfter('#filtered-rooms-type');

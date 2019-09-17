@@ -65,6 +65,9 @@ class Hotel {
       return acc
     }, []);
 
+    console.log('avail rooms', availableRooms)
+    console.log('those filtered by type', foundRooms)
+
     if(foundRooms === []) {
       console.log('in condition', availableRooms)
       return availableRooms;

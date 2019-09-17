@@ -22,9 +22,14 @@ export default {
     $('#rooms-at-date').text(`Rooms available on ${date}: ${hotel.bookingsData.findRoomAtDate(usableDate)}`); 
   },
 
-  updateUserHistory(hotel, id) {
-    $('#user-booking-history-date').text(`All dates ${$('#current-customer').text()} visited with us: ${hotel.bookingsData.findUserHistoryDates(id)}`);
-    $('#user-booking-history-room-number').text(`All rooms ${$('#current-customer').text()} stayed in: ${hotel.bookingsData.findUserHistoryRooms(id)}`);
+  updateUserHistory(date) {
+    $('#user-booking-history-date').append(`<li>${date}</li>`)
+    // $('#user-booking-history-date').text(`All dates ${$('#current-customer').text()} visited with us: ${hotel.bookingsData.findUserHistoryDates(id)}`);
+    // $('#user-booking-history-room-number').text(`All rooms ${$('#current-customer').text()} stayed in: ${hotel.bookingsData.findUserHistoryRooms(id)}`);
+  },
+
+  updateRoomHistory(roomNum) {
+  $('#user-booking-history-room-number').append(`<li>${roomNum}</li>`)
   },
 
   displayOrders(hotel, date) {

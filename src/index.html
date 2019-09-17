@@ -54,9 +54,12 @@
           <p id='rooms-at-date'></p>
         </div>
         <div class='user-bookings-content'>
-          <p id='user-booking-history-date'></p>
-          <p id='user-booking-history-room-number'></p>
+          <h3 class='bookings-headers'>Dates visited</h3>
+          <ul id='user-booking-history-date'></ul>
+          <h3 class='bookings-headers'>Room numbers visited</h3>
+          <ul id='user-booking-history-room-number'></ul>
           <button id='create-booking'>New Booking</button>
+          <p id="booking-error">No customer selected</p>
           <div class='make-booking-form'>
             <input id='specify-type' type='text' placeholder='Filter Rooms by Type'>
             <input id='specify-date' type='text' placeholder='ex. YYYY/MM/DD'>
