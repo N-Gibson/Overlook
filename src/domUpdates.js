@@ -1,4 +1,3 @@
-// To Get the properly formatted date.
 import $ from 'jquery';
 
 export default {
@@ -30,7 +29,7 @@ export default {
     let usableDate = Date.parse(date);
     (hotel.roomServicesData.findOrdersByDate(usableDate))
     $('#orders-by-date').text(`All orders today: ${hotel.roomServicesData.findOrdersByDate(usableDate)}`);
-    $('#order-costs-date').text(`Total cost of orders: $${hotel.roomServicesData.findOrderCost(usableDate)}`);
+    $('#order-costs-date').text(`Total cost of orders: $${hotel.roomServicesData.findOrderCost(usableDate).toFixed(2)}`);
   },
 
   searchOrders(hotel, date) {
@@ -43,7 +42,7 @@ export default {
   },
 
   findCostByUser(hotel) {
-    $('#specified-customer-cost').text(`${$('#current-customer').text()}'s expendatures: $${hotel.roomServicesData.findCostByUser($('#customer-id').text())}`)
+    $('#specified-customer-cost').text(`${$('#current-customer').text()}'s expendatures: $${hotel.roomServicesData.findCostByUser($('#customer-id').text()).toFixed(2)}`)
   },
 
   findCostByUserAtDate(hotel, date, id) {

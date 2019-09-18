@@ -10,7 +10,7 @@ class RoomService {
   findOrderCost(date) {
     return this.roomServiceData.filter(order => Date.parse(order.date) === date).reduce((cost, log) => {
       cost += log.totalCost;
-      return cost
+      return cost;
     }, 0)
   }
 
@@ -35,8 +35,6 @@ class RoomService {
   addOrder(date, food, cost, id) {
     let numId = parseInt(id);
     this.roomServiceData.push({date: date, food: food, totalCost: cost, userID: numId})
-
-    console.log(this.roomServiceData[this.roomServiceData.length - 1])
   }
 }
 

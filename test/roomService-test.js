@@ -19,7 +19,7 @@ describe('Room Service', () => {
   });
 
   it('should be able to find the cost of room service on a given day', () => {
-    expect(roomService.findOrderCost(1569477600000)).to.deep.equal(29);
+    expect(roomService.findOrderCost(1569477600000)).to.deep.equal(28.759999999999998);
   });
    
   it('should be able to find the orders of a customer', () => {
@@ -33,4 +33,10 @@ describe('Room Service', () => {
   it('Should be able to find a users order given a date', () => {
     expect(roomService.findOrdersOfUserAtDate(92, Date.parse("2019/09/26"))).to.equal(11.15)
   });
+
+  it('Should be able to add an order', () => {
+    expect(roomService.roomServiceData.length).to.equal(5);
+    roomService.addOrder('2019/10/30' , 'sammie', 500, 13);
+    expect(roomService.roomServiceData.length).to.equal(6)
+  })
 })

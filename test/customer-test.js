@@ -25,6 +25,7 @@ describe('Customer', () => {
   });
 
   it('should be able to find a specific customer', () => {
-    expect(customer.findCustomer('Michael Ballack')).to.deep.equal([{ id: 7, name: 'Michael Ballack'}]);
+    customer.findCustomer('Chadrick Lowe')
+    expect(customer.currentCustomer).to.deep.equal({ id: 2, name: "Chadrick Lowe" });
   })
 })

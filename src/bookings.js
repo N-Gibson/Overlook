@@ -21,10 +21,6 @@ class Bookings {
     return mostFrequent
   }
 
-  // findDateWithMostRoomsAvail() {
-  //   // Might need to be in hotel because data is in the wrong set?
-  // }
-
   findRoomAtDate(date) {
     let allRoomNumbers = this.bookings.filter(booking => (Date.parse(booking.date)) == date).map(day => day.roomNumber);
     let roomsWithoutDuplicates = [...new Set(allRoomNumbers)];

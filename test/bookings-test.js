@@ -18,10 +18,6 @@ describe('Bookings', () => {
     expect(bookings.findMostPopularDate()).to.equal('2019/08/16');
   });
 
-  // it('should be able to find the date with the most rooms available', () => {
-  //   expect(bookings.findDateWithMostRoomsAvail()).to.equal();
-  // });
-
   it('should be able to find a room given a date', () => {
     expect(bookings.findRoomAtDate(Date.parse("2019/08/16"))).to.deep.equal([ 41, 23 ]);
   });

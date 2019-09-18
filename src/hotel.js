@@ -9,9 +9,6 @@ class Hotel {
     this.bookingsData = new Bookings(bookings);
     this.roomServicesData = new RoomService(roomServices);
     this.date = date;
-    // this.totalRoomsAvailable = this.checkAvailibility().length;
-    // this.percentOccupied = this.calculateRoomsOccupied();
-    // this.totalRoomServiceCost = this.roomServicesData.findOrderCost(Date.parse(date));
   }
 
   findCustomer(name) {
@@ -65,14 +62,9 @@ class Hotel {
       return acc
     }, []);
 
-    console.log('avail rooms', availableRooms)
-    console.log('those filtered by type', foundRooms)
-
     if(foundRooms === []) {
-      console.log('in condition', availableRooms)
       return availableRooms;
     } else {
-      console.log('found room', foundRooms)
       return foundRooms
     }
 
@@ -82,10 +74,7 @@ class Hotel {
   bookReservation(date, roomNum, id) {
     let numRoomNum = parseInt(roomNum);
     let numId = parseInt(id)
-    console.log('in right spot')
     this.hotelData.push({date: date, roomNumber: numRoomNum, userID: numId})
-
-    console.log(this.hotelData);
   }
 
   findMostAvailRooms() {

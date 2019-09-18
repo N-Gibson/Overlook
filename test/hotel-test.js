@@ -39,10 +39,20 @@ describe('Hotel', () => {
   });
 
   it('should be able to find a room based on type date and availability', () => {
-    expect(hotel.findRooms('hotel', '2019/10/19')).to.deep.equal([{ number: 1, roomType: "residential suite", bidet: false,bedSize: "twin", numBeds: 1, costPerNight: 265.03 }]);
+    expect(hotel.findRooms('residential suite', '2019/10/19')).to.deep.equal([{ number: 1, roomType: "residential suite", bidet: false,bedSize: "twin", numBeds: 1, costPerNight: 265.03 }]);
   });
 
   it('should be able to find the date with the most rooms available', () => {
+    expect(hotel.findMostAvailRooms()).to.equal('2019/08/16');
+  });
+
+  it('should be able to book a reservation', () => {
+    expect(hotel.hotelData.length).to.equal(5);
+    hotel.bookReservation('2019/10/30', 10, 13);
+    expect(hotel.hotelData.length).to.equal(6);
+  });
+
+  it('should be able to find the most available rooms', () => {
     expect(hotel.findMostAvailRooms()).to.equal('2019/08/16');
   });
 });
