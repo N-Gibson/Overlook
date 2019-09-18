@@ -43,7 +43,6 @@ $(document).ready(() => {
   $('.make-booking-form').hide();
 
   $('#hotel').click(() => {
-    // $('#welcome-content').remove();
     $('#customer-content, #bookings-content, #room-service-content').hide();
     $('#rooms-available').text(`${hotel.checkAvailibility(date).length}`);
     $('#percent-rooms-occupied').text(`${hotel.calculateRoomsOccupied(date)}%`);
@@ -52,20 +51,21 @@ $(document).ready(() => {
   });
 
   $('#customer').click(() => {
-    // $('#welcome-content').remove();
     $('#hotel-content, #bookings-content, #room-service-content').hide();
     $('#customer-content').show();
   });
 
   $('#bookings').click(() => {
-    // $('#welcome-content').remove();
     $('.bookings-headers').hide();
     if($('#current-customer').text() !== 'All') {
       $('#booking-error').remove();
       $('.bookings-headers').show();
+      $('#create-booking').show();
       hotel.bookingsData.findUserHistoryDates($('#customer-id').text()).map(date => domUpdates.updateUserHistory(date));
 
       hotel.bookingsData.findUserHistoryRooms($('#customer-id').text()).map(room => domUpdates.updateRoomHistory(room));
+    } else {
+      $('#create-booking').hide()
     }
     $('#hotel-content, #customer-content, #room-service-content').hide();
     $('#bookings-content').show();
@@ -132,7 +132,6 @@ $(document).ready(() => {
     if($('#current-customer').text() !== 'All') {
       $('#room-service-no-cust').remove()
     }
-    // $('#welcome-content').remove();
     $('#search-users-orders').hide()
     $('#hotel-content, #customer-content, #bookings-content').hide()
     $('#room-service-content').show();
