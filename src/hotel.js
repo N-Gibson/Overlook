@@ -80,8 +80,10 @@ class Hotel {
   }
 
   bookReservation(date, roomNum, id) {
+    let numRoomNum = parseInt(roomNum);
+    let numId = parseInt(id)
     console.log('in right spot')
-    this.hotelData.push({date: date, roomNumber: roomNum, userID: id})
+    this.hotelData.push({date: date, roomNumber: numRoomNum, userID: numId})
 
     console.log(this.hotelData);
   }

@@ -26,6 +26,7 @@
         </div>
       </div>
       <section id='hotel-content' class='tab'>
+        <h3>Hotel Overview</h3>
         <p>Total rooms available: <span id='rooms-available'></span></p>
         <p>Percent of rooms occupied: <span id='percent-rooms-occupied'></span></p>
         <p>Total daily revinue: <span id='total-daily-revinue'></span></p>
@@ -46,17 +47,19 @@
       </section>
       <section id='bookings-content' class='tab'>
         <div class='hotel-bookings-content'>
+          <h3>Hotel Booking Data</h3>
           <p id='most-popular-booking-date'></p>
           <p id='most-rooms-available-date'></p>
           <label for='date'>Search rooms based on date</label>
           <input id='date' type='text' placeholder='ex. YYYY/MM/DD'>
           <button id='search-date'>Search Date</button>
-          <p id='rooms-at-date'></p>
+          <ul id='rooms-at-date'></ul>
         </div>
         <div class='user-bookings-content'>
-          <h3 class='bookings-headers'>Dates visited</h3>
+          <h3>Customer Booking Data</h3>
+          <h4 class='bookings-headers'>Dates visited</h4>
           <ul id='user-booking-history-date'></ul>
-          <h3 class='bookings-headers'>Room numbers visited</h3>
+          <h4 class='bookings-headers'>Room numbers visited</h4>
           <ul id='user-booking-history-room-number'></ul>
           <button id='create-booking'>New Booking</button>
           <p id="booking-error">No customer selected</p>
@@ -70,6 +73,7 @@
       </section>
       <section id='room-service-content' class='tab'>
         <div class='hotel-orders-info'>
+          <h3>Hotel Order Data</h3>
           <p id='orders-by-date'></p>
           <p id='order-costs-date'></p>
           <label for='search-orders-date'>Search orders by date</label>
@@ -78,6 +82,7 @@
           <p id='search-orders-results'></p>
         </div>
         <div class='customer-order-info'>
+            <h3>Customer Order Data</h3>
           <p id='room-service-no-cust'>No customer selected</p>
           <p id='specified-customers-order'></p>
           <p id='specified-customer-cost'></p>
@@ -90,7 +95,5 @@
         </div>
       </section>
     </main>
-
-    <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
   </body>
 </html>

@@ -102,8 +102,23 @@ $(document).ready(() => {
 
       domUpdates.showReservation($('#current-customer').text(), $('#specify-date').val(), e.target.parentElement.children[0].innerHTML.split(' ')[4], e.target.parentElement.children[1].innerHTML.split(' ')[2], e.target.parentElement.children[2].innerHTML.split(' ')[3], e.target.parentElement.children[3].innerHTML.split(' ')[2], e.target.parentElement.children[4].innerHTML.split(' ')[2], e.target.parentElement.children[5].innerHTML.split(' ')[2]);
       console.log(hotel.hotelData[hotel.hotelData.length - 1]);
+
+      $(`<div class='room-service-order-options'>
+      <select id='select'>
+      </select>
+      <button id='order-food-item'>Order</button>
+      </div>`).insertAfter('#booking-confirmation');
+      hotel.roomServicesData.roomServiceData.map(option => domUpdates.addOrderMenu(option))
     }
-  })
+
+    if(e.target.id === 'order-food-item') {
+      let foodItem = $('#select').val();
+      let food = hotel.roomServicesData.roomServiceData.find(item => item.food === foodItem);
+  
+      console.log(food);
+      hotel.roomServicesData.addOrder()
+    }
+  });
 
   $('#search-date').click(() => {
   $('#date-with-most-available').text(domUpdates.searchRoomsByDate(hotel, $('#date').val()));
@@ -112,6 +127,19 @@ $(document).ready(() => {
   $('#room-service').click(() => {
     if($('#current-customer').text() !== 'All') {
       $('#room-service-no-cust').remove()
+      $(`<div class='room-service-order-options'>
+      <select id='select'>
+      </select>
+      <button id='order-food-item'>Order</button>
+      </div>`).insertAfter('#search-users-orders');
+      hotel.roomServicesData.roomServiceData.map(option => domUpdates.addOrderMenu(option))
+
+
+
+
+
+
+      // Add rest of room service functionality
     }
     // $('#welcome-content').remove();
     $('#search-users-orders').hide()

@@ -19,7 +19,7 @@ export default {
 
   searchRoomsByDate(hotel, date) {
     let usableDate = Date.parse(date);
-    $('#rooms-at-date').text(`Rooms available on ${date}: ${hotel.bookingsData.findRoomAtDate(usableDate)}`); 
+    // $('#rooms-at-date').text(`Rooms available on ${date}: ${hotel.bookingsData.findRoomAtDate(usableDate)}`); 
   },
 
   updateUserHistory(date) {
@@ -56,9 +56,6 @@ export default {
   },
 
   filterRoomsByType(type) {
-    console.log(type)
-    // $('#filtered-rooms-type').text(``)
-
     $(`<div class='bookings-info'>
     <p>Cost Per Night: $ ${type.costPerNight}</p>
     <p>Room Type: ${type.roomType}</p>
@@ -68,7 +65,6 @@ export default {
     <p>Bidet Available: ${type.bidet}</p>
     <button id='confirm-reservation'>Confirm Reservation</button>
     </div>`).insertAfter('#filtered-rooms-type')
-    // NEED To add prices beds, etc... 
   },
 
   addBookingSubmit(hotel, date, id, roomNumber) {
@@ -82,13 +78,18 @@ export default {
   showReservation(currentCustomer, date, costPerNight, roomType, numBeds, bedSize, number, bidet) {
     $('.bookings-info').remove();
 
-    $(`<div>${currentCustomer} just made a resrvation on ${date} :
+    $(`<div id='booking-confirmation'>${currentCustomer} just made a resrvation on ${date} :
     <p>Cost Per Night: $ ${costPerNight}</p>
     <p>Room Type: ${roomType}</p>
     <p>Number of Beds: ${numBeds}</p>
     <p>Bed Size: ${bedSize}</p>
     <p>Room Number: ${number}</p>
     <p>Bidet Available: ${bidet}</p>
-    </div>`).insertAfter('#filtered-rooms-type')
+    </div>`).insertAfter('#filtered-rooms-type');
+  },
+
+  addOrderMenu(option) {
+    const menuItems = `<option value="${option.food}">${option.food} - $${option.totalCost}</option>`;
+    $('#select').append(menuItems)
   },
 }

@@ -33,6 +33,10 @@ class RoomService {
       return cost
     }, 0);
   }
+
+  addOrder(date, food, cost, id) {
+    this.roomServiceData.push({date: date, food: food, totalCost: cost, userId: id})
+  }
 }
 
 export default RoomService;
