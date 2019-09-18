@@ -2,6 +2,8 @@
 
 Overlook is a hotel management app. Designed to allow a user (manager) to look at critical hotel statistics. Look up customers and their reservations and add room service orders. 
 
+Here is the live link: https://n-gibson.github.io/Overlook/
+
 ## Technologies
 
 - jQuery
