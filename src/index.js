@@ -30,7 +30,6 @@ $(document).ready(() => {
   $('#splash-button').click(() => {
     $('#welcome-content').remove();
   })
-  $('#hotel-content').show();
   $('.make-booking-form').hide();
 
   $('#hotel').click(() => {
