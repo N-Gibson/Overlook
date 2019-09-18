@@ -115,8 +115,12 @@ $(document).ready(() => {
       let foodItem = $('#select').val();
       let food = hotel.roomServicesData.roomServiceData.find(item => item.food === foodItem);
   
-      console.log(food);
-      hotel.roomServicesData.addOrder()
+      hotel.roomServicesData.addOrder(date, food.food, food.totalCost, $('#customer-id').text())
+
+      $('#total-daily-revinue').text(`$ ${hotel.calculateDailyRevinue(date)}`)
+      domUpdates.searchOrderByUser(hotel);
+      domUpdates.findCostByUser(hotel);
+      domUpdates.displayOrders(hotel, date);
     }
   });
 
@@ -127,19 +131,6 @@ $(document).ready(() => {
   $('#room-service').click(() => {
     if($('#current-customer').text() !== 'All') {
       $('#room-service-no-cust').remove()
-      $(`<div class='room-service-order-options'>
-      <select id='select'>
-      </select>
-      <button id='order-food-item'>Order</button>
-      </div>`).insertAfter('#search-users-orders');
-      hotel.roomServicesData.roomServiceData.map(option => domUpdates.addOrderMenu(option))
-
-
-
-
-
-
-      // Add rest of room service functionality
     }
     // $('#welcome-content').remove();
     $('#search-users-orders').hide()
@@ -172,6 +163,14 @@ $(document).ready(() => {
       domUpdates.updateSearchCustomerName(hotel);
       // Need to do some bug fixing here the name wont update after an invalid user has been inputted. 
     }
+    if($('#current-customer').text() !== 'All') {
+      $(`<div class='room-service-order-options'>
+      <select id='select'>
+      </select>
+      <button id='order-food-item'>Order</button>
+      </div>`).insertAfter('#search-users-orders');
+      hotel.roomServicesData.roomServiceData.map(option => domUpdates.addOrderMenu(option))
+    }
   });
 
   $('#add-customer-button').click(() => {
@@ -180,6 +179,14 @@ $(document).ready(() => {
     hotel.customersData.createCustomer($('#current-customer').text());
     $('#customer-name').text(`Name: ${hotel.customersData.currentCustomer.name}`);
     $('#customer-id').text(`${hotel.customersData.currentCustomer.id}`);
+    if($('#current-customer').text() !== 'All') {
+      $(`<div class='room-service-order-options'>
+      <select id='select'>
+      </select>
+      <button id='order-food-item'>Order</button>
+      </div>`).insertAfter('#search-users-orders');
+      hotel.roomServicesData.roomServiceData.map(option => domUpdates.addOrderMenu(option))
+    }
   });
 
 });

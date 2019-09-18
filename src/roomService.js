@@ -15,10 +15,12 @@ class RoomService {
   }
 
   findOrderByUser(id) {
+    console.log('order by user')
     return this.roomServiceData.filter(order => order.userID == id).map(breakdown => breakdown.food)
   }
 
   findCostByUser(id) {
+    console.log('cost by user')
     return this.roomServiceData.filter(order => order.userID == id).reduce((cost, breakdown) => {
       cost += breakdown.totalCost
       return cost
@@ -35,7 +37,10 @@ class RoomService {
   }
 
   addOrder(date, food, cost, id) {
-    this.roomServiceData.push({date: date, food: food, totalCost: cost, userId: id})
+    let numId = parseInt(id);
+    this.roomServiceData.push({date: date, food: food, totalCost: cost, userID: numId})
+
+    console.log(this.roomServiceData[this.roomServiceData.length - 1])
   }
 }
 
