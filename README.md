@@ -2,12 +2,19 @@
 
 Overlook is a hotel management app. Designed to allow a user (manager) to look at critical hotel statistics. Look up customers and their reservations and add room service orders. 
 
+## Technologies
+
+- jQuery
+- Sass
+- fetch API
+
 ## Setup
 
-In order to view the code in action on a live server there is some minor setup required. Follow the steps below.
+In order to clone the repo and view the code in action on a live server there is some minor setup required. Follow the steps below.
 
 Run:
 ```
+git clone origin [filepath]
 npm install
 ```
 
