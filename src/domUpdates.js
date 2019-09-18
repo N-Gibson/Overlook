@@ -23,7 +23,7 @@ export default {
   },
 
   updateRoomHistory(roomNum) {
-  $('#user-booking-history-room-number').append(`<li>${roomNum}</li>`)
+    $('#user-booking-history-room-number').append(`<li>${roomNum}</li>`)
   },
 
   displayOrders(hotel, date) {

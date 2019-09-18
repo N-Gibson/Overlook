@@ -15,12 +15,10 @@ class RoomService {
   }
 
   findOrderByUser(id) {
-    console.log('order by user')
     return this.roomServiceData.filter(order => order.userID == id).map(breakdown => breakdown.food)
   }
 
   findCostByUser(id) {
-    console.log('cost by user')
     return this.roomServiceData.filter(order => order.userID == id).reduce((cost, breakdown) => {
       cost += breakdown.totalCost
       return cost
@@ -28,8 +26,6 @@ class RoomService {
   }
 
   findOrdersOfUserAtDate(id, date) {
-    // Need to do some debugging here the numbers are coming in undefinded (the dates are different when they really arent)
-    
     return this.roomServiceData.filter(order => order.userID == id).filter(breakdown => Date.parse(breakdown.date) === date).reduce((cost, log) => {
       cost += log.totalCost
       return cost

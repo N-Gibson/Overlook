@@ -61,9 +61,9 @@ $(document).ready(() => {
       $('#booking-error').remove();
       $('.bookings-headers').show();
       $('#create-booking').show();
-      hotel.bookingsData.findUserHistoryDates($('#customer-id').text()).map(date => domUpdates.updateUserHistory(date));
+      // hotel.bookingsData.findUserHistoryDates($('#customer-id').text()).map(date => domUpdates.updateUserHistory(date));
 
-      hotel.bookingsData.findUserHistoryRooms($('#customer-id').text()).map(room => domUpdates.updateRoomHistory(room));
+      // hotel.bookingsData.findUserHistoryRooms($('#customer-id').text()).map(room => domUpdates.updateRoomHistory(room));
     } else {
       $('#create-booking').hide()
     }
@@ -101,14 +101,18 @@ $(document).ready(() => {
       hotel.bookReservation($('#specify-date').val(), e.target.parentElement.children[4].innerHTML.split(' ')[2], $('#customer-id').text())
 
       domUpdates.showReservation($('#current-customer').text(), $('#specify-date').val(), e.target.parentElement.children[0].innerHTML.split(' ')[4], e.target.parentElement.children[1].innerHTML.split(' ')[2], e.target.parentElement.children[2].innerHTML.split(' ')[3], e.target.parentElement.children[3].innerHTML.split(' ')[2], e.target.parentElement.children[4].innerHTML.split(' ')[2], e.target.parentElement.children[5].innerHTML.split(' ')[2]);
-      console.log(hotel.hotelData[hotel.hotelData.length - 1]);
 
       $(`<div class='room-service-order-options'>
       <select id='select'>
       </select>
       <button id='order-food-item'>Order</button>
       </div>`).insertAfter('#booking-confirmation');
+
       hotel.roomServicesData.roomServiceData.map(option => domUpdates.addOrderMenu(option))
+
+      hotel.bookingsData.findUserHistoryDates($('#customer-id').text()).map(date => domUpdates.updateUserHistory(date));
+        
+      hotel.bookingsData.findUserHistoryRooms($('#customer-id').text()).map(room => domUpdates.updateRoomHistory(room));
     }
 
     if(e.target.id === 'order-food-item') {
@@ -157,10 +161,10 @@ $(document).ready(() => {
     hotel.customersData.findCustomer($('#search-customer-input').val())
     console.log(hotel.customersData.currentCustomer)
     if (hotel.customersData.currentCustomer === undefined) {
-      $('.customer-information').text('Customer not found. Please add a new customer!')
+      $('#customer-name').text('Customer not found.')
+      $('#customer-id').text('Customer ID not found.')
     } else {
       domUpdates.updateSearchCustomerName(hotel);
-      // Need to do some bug fixing here the name wont update after an invalid user has been inputted. 
     }
     if($('#current-customer').text() !== 'All') {
       $(`<div class='room-service-order-options'>
@@ -168,7 +172,12 @@ $(document).ready(() => {
       </select>
       <button id='order-food-item'>Order</button>
       </div>`).insertAfter('#search-users-orders');
-      hotel.roomServicesData.roomServiceData.map(option => domUpdates.addOrderMenu(option))
+
+      hotel.roomServicesData.roomServiceData.map(option => domUpdates.addOrderMenu(option));
+
+      hotel.bookingsData.findUserHistoryDates($('#customer-id').text()).map(date => domUpdates.updateUserHistory(date));
+        
+      hotel.bookingsData.findUserHistoryRooms($('#customer-id').text()).map(room => domUpdates.updateRoomHistory(room));
     }
   });
 
@@ -185,7 +194,18 @@ $(document).ready(() => {
       <button id='order-food-item'>Order</button>
       </div>`).insertAfter('#search-users-orders');
       hotel.roomServicesData.roomServiceData.map(option => domUpdates.addOrderMenu(option))
+
+      hotel.bookingsData.findUserHistoryDates($('#customer-id').text()).map(date => domUpdates.updateUserHistory(date));
+        
+      hotel.bookingsData.findUserHistoryRooms($('#customer-id').text()).map(room => domUpdates.updateRoomHistory(room));
     }
   });
 
+  // function checkList() {
+  //   hotel.bookingsData.findUserHistoryDates($('#customer-id').text()).map(date => domUpdates.updateUserHistory(date));
+    
+  //   hotel.bookingsData.findUserHistoryRooms($('#customer-id').text()).map(room => domUpdates.updateRoomHistory(room));
+  //   let liLength = $('li').length;
+  //   console.log(liLength)
+  // }
 });
