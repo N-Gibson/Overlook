@@ -4,12 +4,8 @@ import $ from 'jquery';
 export default {
 
   updateSearchCustomerName(hotel) { 
-    $('.customer-information').html(`<div class='customer-information'>
-    <p id='customer-name'></p>
-    <p id='customer-id'></p>
-    </div>`);
     $('#current-customer').text($('#search-customer-input').val());
-    $('#customer-name').text(`Name: ${hotel.customersData.currentCustomer.name}`);
+    $('#customer-name').text(`${hotel.customersData.currentCustomer.name}`);
     $('#customer-id').text(`${hotel.customersData.currentCustomer.id}`);
   },
 
@@ -19,7 +15,7 @@ export default {
 
   searchRoomsByDate(hotel, date) {
     let usableDate = Date.parse(date);
-    // $('#rooms-at-date').text(`Rooms available on ${date}: ${hotel.bookingsData.findRoomAtDate(usableDate)}`); 
+    $('#rooms-at-date').text(`Rooms available on ${date}: ${hotel.bookingsData.findRoomAtDate(usableDate)}`); 
   },
 
   updateUserHistory(date) {
